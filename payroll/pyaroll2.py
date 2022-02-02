@@ -1,40 +1,34 @@
 
-print("Payroll Report")
-user = input("Enter Employee Name: ")
-end = "0"
-employees = []
-while len(employees) <= 10:
-    Hours_worked = float(input("Enter Numbers of Hours worked: "))
-    Pay_Rate = float(input("Enter pay Rate: $"))
-    if Hours_worked < 40:
-        GrossPay = round(Pay_Rate * Hours_worked, 2)
-        FedTax = round(0.1 * GrossPay, 2)
-        StateTax = round(0.06 * GrossPay, 2)
-        Fica = round(0.03 * GrossPay,2)
-        print("Employee Name: ", user)
-        print("Gross Pay: $", GrossPay)
-        print("Federal Tax: $", FedTax)
-        print("State Tax: $", StateTax)
-        print("Fica:",Fica)
+employee = 1
+
+while employee < 11:
+    overtime = 0
+    Employee_name = input("***************************" f"\nEnter Employee {employee}'s Name: ")
+    Pay_Rate = float(input("Enter Pay Rate: $"))
+    Hours_worked = float(input("Enter Hours: "))
+
+    regular_pay = Hours_worked * Pay_Rate
+
+    if Hours_worked > 40:
+        overtime = (Hours_worked - 40) * (1.5 * Pay_Rate)
+        gross_pay = regular_pay + overtime
     else:
-        RegularPay = Pay_Rate * 40
-        OverTime = Hours_worked - 40
-        OverTimeRate = Pay_Rate * 1.5
-        OverTimePay = round(OverTimeRate * OverTime, 2)
-        GrossPay = round(RegularPay + OverTimePay, 2)
-        FedTax = round(0.1 * GrossPay, 2)
-        StateTax = round(0.06 * GrossPay, 2)
-        Fica = round(0.03 * GrossPay, 2)
-        print("Employee Name: ", employees)
-        print("Gross Pay: $", GrossPay)
-        print("(Overtime pay: $", OverTimePay, ")")
-        print("Federal Tax: $", FedTax)
-        print("State Tax: $", StateTax)
-        print("Fica:", Fica)
-    user = input(">>>>>>>>>>>>>>>>>>" "Enter Next Employee or type '0' to Exit: ")
-else:
-    print("Exiting program....")
+        gross_pay = regular_pay
 
+    # Tax Deductions
 
+    fed_tax = gross_pay * 0.1
+    state_tax = gross_pay * 0.06
+    fica = gross_pay * 0.03
 
+    # Net Pay
 
+    net_pay = gross_pay - (fed_tax + state_tax + fica)
+
+    # Payroll  Details
+
+    print(
+        f"\nEmployee_name ${Employee_name} Hours_worked: {Hours_worked} Pay_Rate: ${Pay_Rate} Regular Pay: ${regular_pay} Overtime Pay: ${overtime}, Gross Pay: ${gross_pay}, Federal Tax: ${fed_tax}, State Tax: ${state_tax}, FICA: ${fica}, Net Pay: ${net_pay} ")
+
+    # next employee turn
+    employee += 1
