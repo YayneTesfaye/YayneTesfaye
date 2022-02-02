@@ -15,17 +15,14 @@ while employee < 11:
     else:
         gross_pay = regular_pay
 
-    # Tax Deductions
 
     fed_tax = gross_pay * 0.1
     state_tax = gross_pay * 0.06
     fica = gross_pay * 0.03
 
-    # Net Pay
 
     net_pay = gross_pay - (fed_tax + state_tax + fica)
 
-    # Payroll  Details
 
     print(
         f"\nEmployee_name ${Employee_name} Hours_worked: {Hours_worked} Pay_Rate: ${Pay_Rate} Regular Pay: ${regular_pay} Overtime Pay: ${overtime}, Gross Pay: ${gross_pay}, Federal Tax: ${fed_tax}, State Tax: ${state_tax}, FICA: ${fica}, Net Pay: ${net_pay} ")
